@@ -10,10 +10,10 @@ pipeline {
             steps{
                 sh './gradlew test'
             }
-            post {
-                always {
-                    junit 'target/reports/*.xml' 
-                }
+        }
+        stage('Deliver') { 
+            steps {
+                sh './jenkins/scripts/deliver.sh' 
             }
         }
     }
